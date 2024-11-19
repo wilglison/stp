@@ -1,0 +1,60 @@
+#API tests with extension "REST Client"
+
+### Login
+POST http://localhost:3000/api/auth
+Content-Type: application/json
+
+{
+    "login": "admin",
+    "password": "123"
+}
+
+
+### List Unidade hospitalar
+GET http://localhost:3000/api/unidade
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjA3Zjk4ZTllMGU5YmQ1ZTUzY2ZlYiIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzMxODY2NDY4LCJleHAiOjE3MzE5NTI4Njh9.l4SPXhn9icSWX1LnNifJ0SnpQth8keCbevRUeuW2O2I
+
+
+### new Unidade hospitalar
+POST http://localhost:3000/api/unidade
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjA3Zjk4ZTllMGU5YmQ1ZTUzY2ZlYiIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzMxODY4OTk5LCJleHAiOjE3MzE5NTUzOTl9.WVeOLXH_h_afN2JW2-7l4vmlFPGj3fW6FIk60qrTGdA
+Content-Type: application/json
+
+{
+    "telefone": "62-12345678",
+    "nome": "Hospital são jose",
+    "email": "hospitalsaojoses@gmail.com",
+    "endereco": "66f1847bfa5728eba0990e68",
+    "dadosPessoal": "",
+    "latitude": 12353453,
+    "longitude": 43567534,
+    "disponibilidadeLeitos": "64",
+    "especialidades": [""],
+    "medicos": ["66f19f44ef68f40e1759cbad"],
+    "temUTI": true
+}
+
+### delete hopsital
+DELETE http://localhost:3000/api/unidade/66f9ecd0205197a8e0a15dac
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjA3Zjk4ZTllMGU5YmQ1ZTUzY2ZlYiIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzMxODY2NDY4LCJleHAiOjE3MzE5NTI4Njh9.l4SPXhn9icSWX1LnNifJ0SnpQth8keCbevRUeuW2O2I
+
+### update hospital
+PUT http://localhost:3000/api/unidade/66f9ec11205197a8e0a15dab
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjA3Zjk4ZTllMGU5YmQ1ZTUzY2ZlYiIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzMxODY4OTk5LCJleHAiOjE3MzE5NTUzOTl9.WVeOLXH_h_afN2JW2-7l4vmlFPGj3fW6FIk60qrTGdA
+Content-Type: application/json
+
+{
+    "nome": "Hospital São Domingos",
+    "email": "hospitalsaodomingos@gmail.com",
+    "telefone": "62-12345678",
+    "endereco": "66f1847bfa5728eba0990e68",
+    "dadosPessoal": "",
+    "latitude": 1234123,
+    "longitude": 435673456,
+    "disponibilidadeLeitos": "54",
+    "especialidades": [
+      "Cardiologia",
+      "Ortopedia"
+    ],
+    "medicos": []
+}

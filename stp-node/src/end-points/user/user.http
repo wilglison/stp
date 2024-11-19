@@ -1,0 +1,47 @@
+#API tests with extension "REST Client"
+
+### Login
+POST http://localhost:3000/api/auth
+Content-Type: application/json
+
+{
+    "login": "admin",
+    "password": "123"
+}
+
+
+### List Users
+GET http://localhost:3000/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjA3Zjk4ZTllMGU5YmQ1ZTUzY2ZlYiIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzMxODYyMDIzLCJleHAiOjE3MzE5NDg0MjN9.jD3s9pHSXgPkIBhXrLHr0mm_xp8lybV21-lrte6tlSk
+
+
+### new user
+POST http://localhost:3000/api/user
+Content-Type: application/json
+
+{
+    "login": "adminabc",
+    "password": "abc",
+    "roles": ["ROLE_MEDICO_REGULADOR"]
+}
+
+### get user by id
+GET http://localhost:3000/api/user/6739fc9c10105dfa3f203c9e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MzlmNzBmZTM3NDFiZTg5YmYyNTIwYyIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MzE4NTIxNzcsImV4cCI6MTczMTkzODU3N30.ro-dzMjB_wKBX2TdP2oILxos-j0TxoRTVIy01CbxiKs
+
+
+### update user
+PUT http://localhost:3000/api/user/66f07f98e9e0e9bd5e53cfeb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MzlmYzljMTAxMDVkZmEzZjIwM2M5ZSIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MzE4NTM0ODMsImV4cCI6MTczMTkzOTg4M30.TY-34tTv7ZcA8XYkJ_mrYs62QJ-dLdi91SD1kojTGCI
+Content-Type: application/json
+
+{
+    "login": "admin",
+    "password": "123",
+    "roles": ["ROLE_ADMIN"]
+}
+
+### delete user
+DELETE http://localhost:3000/api/user/66f0817292f539f1eb79380b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjA3Zjk4ZTllMGU5YmQ1ZTUzY2ZlYiIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzMxODYyNjkxLCJleHAiOjE3MzE5NDkwOTF9._NUZ1vfSEe95VHuFkSZm6vXKvIrAfNN7VgRVuP4MP5g
+

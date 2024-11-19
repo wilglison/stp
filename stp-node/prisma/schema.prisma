@@ -1,0 +1,159 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Transferencia {
+  id                      String   @id @default(auto()) @map("_id") @db.ObjectId
+  meioTransporte          String
+  destino                 String
+  medicoDestino           String
+  origem                  String
+  medicoOrigem            String
+  medicoRegulador         String
+  horarioSaida            DateTime
+  horarioPrevistoChegada  DateTime
+  distancia               Float
+  documento               String
+  paciente                String
+  solicitacao             String
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+}
+
+model Medico {
+  id                      String   @id @default(auto()) @map("_id") @db.ObjectId
+  name                    String
+  crm                     String
+  telefone                String
+  unidadeHospitalar       String
+  papel                   String
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+  solicitacoes            String[]
+  transferenciasDestino   String[]
+  transferenciasOrigem    String[]
+  transferenciasRegulador String[]
+}
+
+model Solicitacao {
+  id                        String   @id @default(auto()) @map("_id") @db.ObjectId
+  medico                    String
+  paciente                  String
+  motivo                    String
+  documento                 String
+  transferencia             String
+  especialidadesRequisitada String[]
+  createdAt                 DateTime @default(now())
+  updatedAt                 DateTime @updatedAt
+}
+
+model UnidadeHospitalar {
+  id                     String   @id @default(auto()) @map("_id") @db.ObjectId
+  nome                   String
+  telefone               String
+  email                  String
+  endereco               String
+  dadosPessoal           String
+  latitude               Float
+  longitude              Float
+  disponibilidadeLeitos  String
+  especialidades         String[]
+  medicos                String[]
+  temUTI                 Boolean
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+}
+
+model DocumentoTransferencia {
+  id                            String   @id @default(auto()) @map("_id") @db.ObjectId
+  drogasAdministradas           String
+  procedimentosAcondicionamento String
+  procedimentosRecebimento      String
+  solicitacao                   String
+  transferencia                 String
+  createdAt                     DateTime @default(now())
+  updatedAt                     DateTime @updatedAt
+}
+
+model Endereco {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  cep          String
+  rua          String
+  numero       String
+  complemento  String
+  bairro       String
+  cidade       String
+  estado       String
+  pais         String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Paciente {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  cpf            String
+  nome           String
+  telefone       String
+  email          String
+  endereco       String
+  tipoSanguineo  String
+  prontuario     String
+  solicitacoes   String[]
+  transferencias String[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Prontuario {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  classificacao      String
+  medicamentosAtuais String[]
+  paciente           String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Especialidade {
+  id                   String   @id @default(auto()) @map("_id") @db.ObjectId
+  nome                 String
+  descricao            String
+  unidadesHospitalares String[]
+  solicitacoes         String[]
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
+model MedicamentoPrescrito {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  medicamento      String
+  posologia        String
+  dosagem          Float
+  unidadeDosagem   String
+  viaAdministracao String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Medicamento {
+  id                     String   @id @default(auto()) @map("_id") @db.ObjectId
+  nome                   String
+  descricao              String
+  prontuarios            String[]
+  medicamentosPrescritos String[]
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  login     String   @unique
+  password  String
+  roles     String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

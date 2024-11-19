@@ -1,0 +1,207 @@
+#API tests with extension "REST Client"
+
+### Login
+POST http://localhost:3000/api/auth
+Content-Type: application/json
+
+{
+    "login": "adm7",
+    "password": "123"
+}
+
+
+### List User### List User
+GET http://localhost:3000/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MzlmYzljMTAxMDVkZmEzZjIwM2M5ZSIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MzE4NTM0ODMsImV4cCI6MTczMTkzOTg4M30.TY-34tTv7ZcA8XYkJ_mrYs62QJ-dLdi91SD1kojTGCI
+
+
+
+### new user
+POST http://localhost:3000/api/user
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MzlmNzBmZTM3NDFiZTg5YmYyNTIwYyIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MzE4NTI5MTQsImV4cCI6MTczMTkzOTMxNH0.dr4VmfhFQW0UrCFWVhEPPrWsv_5QWS-1cd5F-rriJ2k
+
+{
+    "login": "adm7",
+    "password": "123",
+    "roles": ["ROLE_USER"]
+}
+
+### get ID user
+GET http://localhost:3000/api/user/6739fc9c10105dfa3f203c9e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MzlmNzBmZTM3NDFiZTg5YmYyNTIwYyIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MzE4NTIxNzcsImV4cCI6MTczMTkzODU3N30.ro-dzMjB_wKBX2TdP2oILxos-j0TxoRTVIy01CbxiKs
+
+
+### update user
+PUT http://localhost:3000/api/user/66f07f98e9e0e9bd5e53cfeb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MzlmYzljMTAxMDVkZmEzZjIwM2M5ZSIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MzE4NTM0ODMsImV4cCI6MTczMTkzOTg4M30.TY-34tTv7ZcA8XYkJ_mrYs62QJ-dLdi91SD1kojTGCI
+Content-Type: application/json
+
+{
+    "login": "admin",
+    "password": "123",
+    "roles": ["ROLE_ADMIN"]
+}
+
+# Endereços
+### List Endereços
+GET http://localhost:3000/api/endereco
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MzlmNzBmZTM3NDFiZTg5YmYyNTIwYyIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MzE4NTIxNzcsImV4cCI6MTczMTkzODU3N30.ro-dzMjB_wKBX2TdP2oILxos-j0TxoRTVIy01CbxiKs
+
+### new Endereço
+POST http://localhost:3000/api/endereco
+Content-Type: application/json
+
+{
+  "rua": "Rua 21 de Janeiro",
+  "numero": "2345",
+  "complemento": "QD 4, LT 24",
+  "bairro": "Centro",
+  "cidade": "Goiânia",
+  "estado": "GO",
+  "pais": "Brasil",
+  "cep": "73765432"
+}
+
+# Medicamento
+### List Medicamentos
+GET http://localhost:3000/api/medicamento
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MzlmNzBmZTM3NDFiZTg5YmYyNTIwYyIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MzE4NTIxNzcsImV4cCI6MTczMTkzODU3N30.ro-dzMjB_wKBX2TdP2oILxos-j0TxoRTVIy01CbxiKs
+
+### new Medicamento
+POST http://localhost:3000/api/medicamento
+Content-Type: application/json
+
+{
+    "nome": "Dipirona Monoidratada",
+    "descricao": "Analgésico e antitérmico",
+    "prontuarios": [],
+    "medicamentosPrescritos": []
+    
+}
+
+# Prontuario
+### List Prontuarios
+GET http://localhost:3000/api/prontuario
+
+### new Prontuario
+POST http://localhost:3000/api/prontuario
+Content-Type: application/json
+
+{
+  "classificacao": "primaria",
+  "medicamentosAtuais": ["66f19981c8ac7ea4b8e25d01"],
+  "paciente": ""
+}
+
+# Paciente
+### List Pacentes
+GET http://localhost:3000/api/paciente
+
+### new Paciente
+POST http://localhost:3000/api/paciente
+Content-Type: application/json
+
+{
+  "cpf": "532452345",
+  "nome": "wilglison santos",
+  "telefone": "6263456345",
+  "email": "wilglison@gmal.com",
+  "endereco": "66f1847bfa5728eba0990e68",
+  "tipoSanguineo": "b+",
+  "prontuario": "66f19bceef68f40e1759cbab",
+  "solicitacoes": [],
+  "transferencias": []
+}
+
+# Medico
+### List Medico
+GET http://localhost:3000/api/medico
+
+### new Medico
+POST http://localhost:3000/api/medico
+Content-Type: application/json
+
+{
+  "name": "Dr. João Pedro",
+  "crm": "52346723",
+  "telefone": "62953454",
+  "unidadeHospitalar": "",
+  "papel": "regulador",
+  "solicitacoes": [""],
+  "transferenciasOrigem": [""],
+  "transferenciasDestino": [""],
+  "transferenciasRegulador": [""]
+}
+
+# Unidade hospitalar
+### List Unidade hospitalar
+GET http://localhost:3000/api/unidade
+
+### new Unidade hospitalar
+POST http://localhost:3000/api/unidade
+Content-Type: application/json
+
+{
+    "telefone": "62-12345678",
+    "email": "hospitalsaodomingos@gmail.com",
+    "endereco": "66f1847bfa5728eba0990e68",
+    "dadosPessoal": "",
+    "latitude": 12353453,
+    "longitude": 43567534,
+    "disponibilidadeLeitos": "64",
+    "especialidades": [""],
+    "medicos": ["66f19f44ef68f40e1759cbad"],
+    "temUTI": true
+}
+
+
+# Solicitação
+### List Solicitações
+GET http://localhost:3000/api/xx
+
+### new Solicitação
+POST http://localhost:3000/api/xx
+Content-Type: application/json
+
+{
+}
+
+# Documento Transferencia
+### List Documentos Transferencia
+GET http://localhost:3000/api/documento
+
+### new Documento Transferencia
+POST http://localhost:3000/api/documento
+Content-Type: application/json
+
+{
+  "drogasAdministradas": "66f19981c8ac7ea4b8e25d01",
+  "procedimentosAcondicionamento": "teste",
+  "procedimentosRecebimento": "teste",
+  "solicitacao": "",
+  "transferencia": ""
+}
+
+
+# TRANSFERENCIA
+### List Transferencias
+GET http://localhost:3000/api/transferencia
+
+### new Transferencia
+POST http://localhost:3000/api/transferencia
+Content-Type: application/json
+
+{
+    "meioTransporte": "AMBULANCIA",
+    "destino": "66f9ecd0205197a8e0a15dac",
+    "medicoDestino": "66f19f44ef68f40e1759cbad",
+    "origem": "66f19fbeef68f40e1759cbaf",
+    "medicoOrigem": "66f19f44ef68f40e1759cbad",
+    "medicoRegulador": "66f19f44ef68f40e1759cbad",
+    "horarioSaida": "2024-09-26T00:00:00.000Z",
+    "documento": "66f19f44ef68f40e1759cbad",
+    "paciente": "66f19e96ef68f40e1759cbac",
+    "solicitacao": ""
+}
+

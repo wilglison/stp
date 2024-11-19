@@ -1,0 +1,31 @@
+#API tests with extension "REST Client"
+
+### Login
+POST http://localhost:3000/api/auth
+Content-Type: application/json
+
+{
+    "login": "admin",
+    "password": "123"
+}
+
+### List Pacentes
+GET http://localhost:3000/api/paciente
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjA3Zjk4ZTllMGU5YmQ1ZTUzY2ZlYiIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzMxODcwNjkzLCJleHAiOjE3MzE5NTcwOTN9.ZGDKG0UofmIyPnog5DPdnS9GSkDpgAmcicZABIv82to
+
+### new Paciente
+POST http://localhost:3000/api/paciente
+Content-Type: application/json
+
+{
+  "cpf": "532452345",
+  "nome": "wilglison santos",
+  "telefone": "6263456345",
+  "email": "wilglison@gmal.com",
+  "endereco": "66f1847bfa5728eba0990e68",
+  "tipoSanguineo": "b+",
+  "prontuario": "66f19bceef68f40e1759cbab",
+  "solicitacoes": [],
+  "transferencias": []
+}
+

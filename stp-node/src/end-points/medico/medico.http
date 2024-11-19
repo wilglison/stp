@@ -1,0 +1,37 @@
+#API tests with extension "REST Client"
+
+### Login
+POST http://localhost:3000/api/auth
+Content-Type: application/json
+
+{
+    "login": "admin",
+    "password": "123"
+}
+
+
+### List Medico
+GET http://localhost:3000/api/medico
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjA3Zjk4ZTllMGU5YmQ1ZTUzY2ZlYiIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzMxOTUxMjk3LCJleHAiOjE3MzIwMzc2OTd9.2rWht0MtzZvQ7-GkcXomHWc_mFdZwmyfZDSSTKLB1cM
+
+### new Medico
+POST http://localhost:3000/api/medico
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjA3Zjk4ZTllMGU5YmQ1ZTUzY2ZlYiIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzMxOTUxMjk3LCJleHAiOjE3MzIwMzc2OTd9.2rWht0MtzZvQ7-GkcXomHWc_mFdZwmyfZDSSTKLB1cM
+Content-Type: application/json
+
+{
+  "name": "Dr. Antonio Pereira",
+  "crm": "32548993",
+  "telefone": "62953454",
+  "unidadeHospitalar": "",
+  "papel": "medico",
+  "solicitacoes": [""],
+  "transferenciasOrigem": [""],
+  "transferenciasDestino": [""],
+  "transferenciasRegulador": [""]
+}
+
+### get by name 
+GET http://localhost:3000/api/medico/search/anto
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjA3Zjk4ZTllMGU5YmQ1ZTUzY2ZlYiIsInJvbGVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNzMxOTUyMzk3LCJleHAiOjE3MzIwMzg3OTd9.aclfDSiIZvxJfSONgBc5yZakiTJAQfjYFSUWpx89AT0
+

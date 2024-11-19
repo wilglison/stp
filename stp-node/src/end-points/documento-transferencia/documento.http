@@ -1,0 +1,29 @@
+#API tests with extension "REST Client"
+
+### Login
+POST http://localhost:3000/api/auth
+Content-Type: application/json
+
+{
+    "login": "medicoRegulador",
+    "password": "123"
+}
+
+
+### List Documentos Transferencia
+GET http://localhost:3000/api/documento
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2EwYWI5NGQ3MWYxMjAyNWU2NmMxNiIsInJvbGVzIjpbIlJPTEVfTUVESUNPX1JFR1VMQURPUiJdLCJpYXQiOjE3MzE4NTcwOTMsImV4cCI6MTczMTk0MzQ5M30.fwd8nFW2W5SgQ4GMLyz4YDQo5V27YOwmbPU0CVZVOmU
+
+
+### new Documento Transferencia
+POST http://localhost:3000/api/documento
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2EwNTFiNjFlNGM2ZThiZTc5YjNhMyIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MzE4NTU2NzQsImV4cCI6MTczMTk0MjA3NH0.8NzLpuLzfeUA89ggF-wBQC2yVXfhVujM8y5cjBClqag
+Content-Type: application/json
+
+{
+  "drogasAdministradas": "66f19981c8ac7ea4b8e25d01",
+  "procedimentosAcondicionamento": "teste",
+  "procedimentosRecebimento": "teste",
+  "solicitacao": "",
+  "transferencia": ""
+}

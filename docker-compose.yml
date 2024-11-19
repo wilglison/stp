@@ -1,0 +1,26 @@
+
+services:
+  stp-api:
+    build:
+      context: ./stp-node
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=mongodb+srv://admin:6Su!nrQ-hfL9WK$@cluster0.tgfst.mongodb.net/stp-node?retryWrites=true&w=majority&appName=Cluster0
+    networks:
+      - stp-network
+
+  stp-ui:
+    build:
+      context: ./stp-front-end
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - stp-api
+    networks:
+      - stp-network
+
+networks:
+  stp-network:
